@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía: Selección de Software de Diseño según el Proyecto</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #2563eb;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1e3a8a);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 1rem auto 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #1e293b;
+            margin-top: 1.5rem;
+        }
+
+        /* Sistema de Filtros (Labs) */
+        .filter-container {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .software-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .software-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid #cbd5e1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            display: block;
+        }
+
+        /* Colores dinámicos por categoría */
+        .software-card.uiux { border-left-color: #a855f7; }
+        .software-card.vector { border-left-color: #f97316; }
+        .software-card.bitmap { border-left-color: #0ea5e9; }
+        .software-card.editorial { border-left-color: #ec4899; }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            background: #e2e8f0;
+            margin-right: 5px;
+        }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .check { color: #10b981; font-weight: bold; }
+        .cross { color: #ef4444; font-weight: bold; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛠️ Selección de Software de Diseño según el Proyecto</h1>
+        <p>Aprende a analizar los requerimientos de un cliente, las plataformas objetivo y el presupuesto para elegir la herramienta de diseño idónea.</p>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2>📋 Criterios Clave para Elegir Software</h2>
+            <p>Un error común es usar la misma herramienta para todo. Para elegir correctamente, el diseñador debe evaluar cuatro variables fundamentales:</p>
+            <ul>
+                <li><strong>Naturaleza del entregable:</strong> ¿Es un sitio web interactivo, un logotipo vectorial, una revista impresa o una fotografía retocada?</li>
+                <li><strong>Colaboración en tiempo real:</strong> ¿Trabajas solo o necesitas que el cliente y los desarrolladores vean los cambios en vivo?</li>
+                <li><strong>Presupuesto y Licenciamiento:</strong> ¿El proyecto soporta una suscripción mensual costosa o requiere alternativas Open Source o de pago único?</li>
+                <li><strong>Compatibilidad de Hardware:</strong> ¿El equipo de trabajo usa MacOS, Windows, Linux o trabaja desde entornos basados en la nube (Chromebooks)?</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🔍 Simulador: ¿Qué software necesitas hoy?</h2>
+            <p>Selecciona el tipo de proyecto que requiere tu cliente para descubrir qué opciones de la industria se adaptan mejor:</p>
+            
+            <div class="filter-container">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="filterSoftware('all')">Todos</button>
+                    <button class="tab-btn" onclick="filterSoftware('uiux')">Web / Apps / Prototipos</button>
+                    <button class="tab-btn" onclick="filterSoftware('vector')">Logos e Ilustración</button>
+                    <button class="tab-btn" onclick="filterSoftware('bitmap')">Retoque e Imagen</button>
+                    <button class="tab-btn" onclick="filterSoftware('editorial')">Editorial y Prensa</button>
+                </div>
+
+                <div class="software-grid" id="grid">
+                    <div class="software-card uiux">
+                        <span class="badge" style="background:#fae8ff; color:#a855f7;">UI/UX</span>
+                        <h3 style="margin: 0.5rem 0 0.2rem 0;">Figma</h3>
+                        <p style="margin:0; font-size:0.9rem;"><strong>Ideal para:</strong> Interfaces web, apps móviles y sistemas de diseño colaborativos. Funciona en navegador, permitiendo co-diseño en tiempo real.</p>
+                    </div>
+                    <div class="software-card vector">
+                        <span class="badge" style="background:#ffedd5; color:#f97316;">Vectorial</span>
+                        <h3 style="margin: 0.5rem 0 0.2rem 0;">Adobe Illustrator</h3>
+                        <p style="margin:0; font-size:0.9rem;"><strong>Ideal para:</strong> Identidad corporativa, logotipos, piezas escalables e ilustración compleja. Estándar de la industria de impresión.</p>
+                    </div>
+                    <div class="software-card bitmap">
+                        <span class="badge" style="background:#e0f2fe; color:#0ea5e9;">Mapa de Bits</span>
+                        <h3 style="margin: 0.5rem 0 0.2rem 0;">Adobe Photoshop</h3>
+                        <p style="margin:0; font-size:0.9rem;"><strong>Ideal para:</strong> Edición fotográfica, fotocomposición, pintura digital y preparación de texturas fijas.</p>
+                    </div>
+                    <div class="software-card editorial">
+                        <span class="badge" style="background:#fce7f3; color:#ec4899;">Editorial</span>
+                        <h3 style="margin: 0.5rem 0 0.2rem 0;">Adobe InDesign</h3>
+                        <p style="margin:0; font-size:0.9rem;"><strong>Ideal para:</strong> Maquetación de libros, revistas, catálogos interactivos y documentos extensos con alto control tipográfico.</p>
+                    </div>
+                    <div class="software-card vector">
+                        <span class="badge" style="background:#ffedd5; color:#f97316;">Vectorial (Open Source)</span>
+                        <h3 style="margin: 0.5rem 0 0.2rem 0;">Inkscape</h3>
+                        <p style="margin:0; font-size:0.9rem;"><strong>Ideal para:</strong> Presupuestos cero. Excelente alternativa gratuita para el diseño vectorial basada en formatos estándar (SVG).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>📊 Matriz Técnica de Viabilidad</h2>
+            <p>Una comparativa directa que ayuda a los alumnos a entender las limitaciones técnicas y operacionales de cada ecosistema de software:</p>
+            
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Software</th>
+                            <th>Tipo de Gráfico / Fin</th>
+                            <th>Colaboración Vivo</th>
+                            <th>Plataformas</th>
+                            <th>Modelo de Pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Figma</strong></td>
+                            <td>Vectores / UI-UX</td>
+                            <td class="check">✓ Sí (Nativo)</td>
+                            <td>Web, Windows, macOS</td>
+                            <td>Freemium (Suscripción)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adobe Illustrator</strong></td>
+                            <td>Vectores / Impresión</td>
+                            <td class="cross">✗ Limitado</td>
+                            <td>Windows, macOS, iPad</td>
+                            <td>Suscripción (Adobe CC)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Photoshop</strong></td>
+                            <td>Ráster (Píxeles)</td>
+                            <td class="cross">✗ No</td>
+                            <td>Windows, macOS, iPad</td>
+                            <td>Suscripción (Adobe CC)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Affinity Designer</strong></td>
+                            <td>Híbrido (Vector/Pixel)</td>
+                            <td class="cross">✗ No</td>
+                            <td>Windows, macOS, iPad</td>
+                            <td>Pago Único (Sin renta)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GIMP / Inkscape</strong></td>
+                            <td>Píxeles / Vectores</td>
+                            <td class="cross">✗ No</td>
+                            <td>Win, macOS, Linux</td>
+                            <td>Gratuito (Código Abierto)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>🧠 Ejercicio de Análisis: Casos Prácticos</h2>
+            <p>Guía de evaluación rápida para que el alumno aprenda a diagnosticar necesidades:</p>
+            <blockquote style="border-left: 4px solid var(--accent-color); padding-left: 1rem; margin-left: 0; background: #fafafa; padding: 1rem;">
+                <strong>Caso A:</strong> Un cliente corporativo requiere rediseñar su logotipo y papelería institucional. Cuenta con presupuesto amplio pero exige los archivos listos para imprenta profesional.<br>
+                <small style="color: var(--accent-color);">👉 <strong>Diagnóstico:</strong> Requerimiento Vectorial + Imprenta. <strong>Software óptimo:</strong> Adobe Illustrator.</small>
+            </blockquote>
+            <blockquote style="border-left: 4px solid var(--accent-color); padding-left: 1rem; margin-left: 0; background: #fafafa; padding: 1rem; margin-top: 1rem;">
+                <strong>Caso B:</strong> Una Startup tecnológica necesita diseñar su nueva App móvil. El equipo está distribuido en tres países y los programadores necesitan extraer los códigos CSS de los botones de forma inmediata.<br>
+                <small style="color: var(--accent-color);">👉 <strong>Diagnóstico:</strong> Requerimiento UI/UX + Colaboración remota. <strong>Software óptimo:</strong> Figma.</small>
+            </blockquote>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Material de Consulta Académica • Gestión de Proyectos de Diseño • Tópicos de Calidad para el Diseño de Software © 2026</p>
+    </footer>
+
+    <script>
+        function filterSoftware(category) {
+            // Actualizar pestañas activas
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filtrar las tarjetas
+            const cards = document.querySelectorAll('.software-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    if (card.classList.contains(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

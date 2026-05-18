@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo Didáctico: Imágenes Digitales y Aspectos Legales</title>
+    <style>
+        :root {
+            --primary-color: #1e1b4b;
+            --accent-color: #f59e0b;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #4338ca);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 1rem auto 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: #4338ca;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #1e293b;
+            margin-top: 1.5rem;
+        }
+
+        /* Simulador de Zoom */
+        .zoom-lab {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .zoom-btn {
+            background-color: #4338ca;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .zoom-btn:hover {
+            background-color: #312e81;
+        }
+
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .image-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            width: 260px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .graphic-circle {
+            width: 80px;
+            height: 80px;
+            background: #f59e0b;
+            border-radius: 50%;
+            margin: 1rem auto;
+            transition: all 0.4s ease;
+        }
+
+        /* Efecto pixelado simulado con sombras CSS */
+        .pixelated {
+            box-shadow: 
+                0 0 0 2px #f59e0b,
+                10px 0 0 0 #f59e0b, -10px 0 0 0 #f59e0b,
+                0 10px 0 0 #f59e0b, 0 -10px 0 0 #f59e0b;
+            border-radius: 0% !important; 
+            transform: scale(2);
+        }
+
+        .vector-scaled {
+            transform: scale(2);
+        }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+        }
+
+        /* Semáforo Legal */
+        .legal-card {
+            border-left: 5px solid #cbd5e1;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .legal-danger { background-color: #fef2f2; border-left-color: #ef4444; }
+        .legal-warning { background-color: #fffbeb; border-left-color: #f59e0b; }
+        .legal-success { background-color: #f0fdf4; border-left-color: #10b981; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background: white;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🖼️ Guía Didáctica: Imágenes Digitales y Marco Legal</h1>
+        <p>Aprende a diferenciar las tecnologías detrás de los archivos visuales y comprende los derechos y responsabilidades al utilizarlos en proyectos profesionales.</p>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2>1. Tipos de Imágenes Digitales: Características y Ventajas</h2>
+            <p>En el entorno informático, las imágenes se clasifican en dos grandes naturalezas tecnológicas. Elegir la incorrecta puede arruinar la calidad de un diseño o hacer que el archivo pese demasiado.</p>
+            
+            <h3>👾 Mapas de Bits (Imágenes Rasterizadas)</h3>
+            <p>Están formadas por una retícula de puntos llamados <strong>píxeles</strong>. Cada píxel contiene información específica de color y luminosidad.</p>
+            <ul>
+                <li><strong>Formatos comunes:</strong> JPEG, PNG, GIF, WebP, TIFF.</li>
+                <li><strong>Ventajas:</strong> Son perfectas para representar la realidad, fotografía digital y gradaciones de color ultra complejas con millones de matices.</li>
+                <li><strong>Desventaja principal:</strong> Tienen una resolución fija. Si se aumentan de tamaño, el software debe "inventar" píxeles, provocando pérdida de nitidez (efecto pixelado).</li>
+            </ul>
+
+            <h3>📐 Imágenes Vectoriales</h3>
+            <p>No usan píxeles. Están constituidas por objetos geométricos independientes (puntos, líneas, curvas), definidos por <strong>fórmulas matemáticas</strong> de coordenadas espaciales.</p>
+            <ul>
+                <li><strong>Formatos comunes:</strong> SVG, AI, EPS, PDF.</li>
+                <li><strong>Ventajas:</strong> Son infinitamente escalables. Puedes ampliar un vector al tamaño de un edificio y jamás perderá un solo ápice de nitidez. Además, suelen pesar muy pocos Kilobytes.</li>
+                <li><strong>Desventaja principal:</strong> No son aptas para fotografías, ya que representar los detalles de la realidad requeriría millones de vectores matemáticos, colapsando la computadora.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>🔍 Laboratorio de Zoom: Comportamiento Técnico</h2>
+            <p>Haz clic en el botón para simular un <strong>acercamiento (Zoom del 400%)</strong> sobre un elemento circular. Observa cómo reacciona cada tecnología:</p>
+            
+            <div class="zoom-lab">
+                <button class="zoom-btn" onclick="toggleZoom()">Aplicar Zoom Extremo</button>
+                
+                <div class="preview-container">
+                    <div class="image-box">
+                        <strong style="color: #ef4444;">Mapa de Bits (Píxeles)</strong>
+                        <div id="raster-circle" class="graphic-circle"></div>
+                        <p id="raster-text" style="font-size:0.85rem; margin:0; color:#64748b;">Resolución normal.</p>
+                    </div>
+                    <div class="image-box">
+                        <strong style="color: #10b981;">Imagen Vectorial (Fórmulas)</strong>
+                        <div id="vector-circle" class="graphic-circle"></div>
+                        <p id="vector-text" style="font-size:0.85rem; margin:0; color:#64748b;">Bordes matemáticos perfectos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>⚖️ 2. Disposiciones Legales del Uso de Imágenes</h2>
+            <p>El hecho de que una imagen esté disponible en Google no significa que sea pública o gratuita. El uso no autorizado de imágenes está estrictamente regulado bajo la ley de <strong>Derechos de Autor (Copyright)</strong>.</p>
+            
+            <h3>El Semáforo de la Legalidad y Licencias</h3>
+            <p>Guía de cumplimiento para que los alumnos eviten riesgos legales en sus entregas o agencias:</p>
+
+            <div class="legal-card legal-danger">
+                <strong>🔴 Prohibido: Copyright (Todos los derechos reservados)</strong>
+                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">La imagen pertenece enteramente a su creador. No puedes usarla en blogs, redes sociales ni tareas escolares sin comprar una licencia explícita o tener un permiso firmado por el autor. Romper esto puede derivar en multas por plagio.</p>
+            </div>
+
+            <div class="legal-card legal-warning">
+                <strong>🟡 Permitido bajo condiciones: Creative Commons (CC)</strong>
+                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">El autor permite el uso gratuito de su obra, pero bajo ciertas reglas que el alumno debe identificar mediante iconos o siglas:</p>
+                <ul style="font-size: 0.85rem; margin-top:5px;">
+                    <li><strong>BY (Atribución):</strong> Tienes que dar crédito obligatorio al autor original.</li>
+                    <li><strong>NC (No Comercial):</strong> Puedes usarla para una tarea o proyecto sin fines de lucro, pero jamás para vender un producto.</li>
+                    <li><strong>ND (Sin Obra Derivada):</strong> Puedes usar la imagen, pero está prohibido editarla, recortarla o hacer un montaje con ella.</li>
+                </ul>
+            </div>
+
+            <div class="legal-card legal-success">
+                <strong>🟢 Libre de Uso: Dominio Público y CC0 (Creative Commons Zero)</strong>
+                <p style="margin: 5px 0 0 0; font-size: 0.9rem;">Imágenes cuyos derechos patrimoniales han expirado (normalmente entre 50 y 100 años tras la muerte del autor) o que han sido donadas explícitamente al mundo. Puedes modificarlas, distribuirlas y usarlas comercialmente sin dar crédito (ej. bancos de imágenes libres como Unsplash, Pexels o Pixabay).</p>
+            </div>
+
+            <h3>💡 El Derecho de Imagen Corporativa y de Personas</h3>
+            <ul>
+                <li><strong>Derecho de Voz y Rostro:</strong> Si tomas una fotografía de una persona para una campaña publicitaria, necesitas un documento firmado llamado <em>"Model Release"</em> (Cesión de Derechos de Imagen), de lo contrario, la persona puede demandar por uso comercial de su identidad.</li>
+                <li><strong>Uso de Marcas Registradas:</strong> No puedes incluir logotipos comerciales (como el de Apple o Nike) en tus diseños independientes simulando que son patrocinadores oficiales.</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Material de Apoyo Académico • Legislación y Gestión de Activos Digitales • Tópicos de Calidad para el Diseño de Software © 2026</p>
+    </footer>
+
+    <script>
+        let isZoomed = false;
+
+        function toggleZoom() {
+            const raster = document.getElementById('raster-circle');
+            const vector = document.getElementById('vector-circle');
+            const btn = document.querySelector('.zoom-btn');
+            const rText = document.getElementById('raster-text');
+            const vText = document.getElementById('vector-text');
+
+            if (!isZoomed) {
+                raster.classList.add('pixelated');
+                vector.classList.add('vector-scaled');
+                rText.innerHTML = "❌ <strong>¡Pixelado!</strong> Los cuadrados de los píxeles se hacen evidentes y pierde nitidez.";
+                vText.innerHTML = "🪞 <strong>¡Impecable!</strong> El navegador recalcula la fórmula matemática manteniendo el borde liso.";
+                btn.textContent = "Restablecer Vista";
+                isZoomed = true;
+            } else {
+                raster.classList.remove('pixelated');
+                vector.classList.remove('vector-scaled');
+                rText.innerText = "Resolución normal.";
+                vText.innerText = "Bordes matemáticos perfectos.";
+                btn.textContent = "Aplicar Zoom Extremo";
+                isZoomed = false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Interactivo: Entorno y Herramientas de Diseño</title>
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --accent-color: #10b981;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #064e3b);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 1rem auto 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Layout con barra lateral interactiva */
+        .workspace-layout {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+            max-width: 320px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            height: fit-content;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-item {
+            padding: 10px 14px;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #475569;
+            transition: all 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .menu-item.active {
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: bold;
+        }
+
+        .content-area {
+            flex: 3;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            min-height: 450px;
+        }
+
+        .content-block {
+            display: none;
+        }
+
+        .content-block.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos de elementos dentro del visor */
+        .tool-title {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .badge-type {
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+            background: #d1fae5;
+            color: #065f46;
+            margin-bottom: 1rem;
+        }
+
+        .tip-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid var(--accent-color);
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Gráfico demostrativo simulado */
+        .visual-demo {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-weight: bold;
+            color: #64748b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background: white;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .workspace-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🛠️ Anatomía del Entorno de Diseño y Manipulación</h1>
+        <p>Explora los conceptos fundamentales, herramientas y operaciones técnicas esenciales para la creación y edición de imágenes digitales.</p>
+    </header>
+
+    <div class="container">
+
+        <div class="workspace-layout">
+            
+            <nav class="sidebar">
+                <h3>Módulos de Aprendizaje</h3>
+                <ul class="menu-list">
+                    <li class="menu-item active" onclick="showContent(0, this)">1. Formas Básicas y Combinadas</li>
+                    <li class="menu-item" onclick="showContent(1, this)">2. Relleno y Contornos</li>
+                    <li class="menu-item" onclick="showContent(2, this)">3. Trazos Abiertos y Cerrados</li>
+                    <li class="menu-item" onclick="showContent(3, this)">4. Trabajo con Texto</li>
+                    <li class="menu-item" onclick="showContent(4, this)">5. Transformación de Objetos</li>
+                    <li class="menu-item" onclick="showContent(5, this)">6. Máscaras y Filtros</li>
+                    <li class="menu-item" onclick="showContent(6, this)">7. Escaneo y Captura</li>
+                    <li class="menu-item" onclick="showContent(7, this)">8. Montajes y Efectos</li>
+                    <li class="menu-item" onclick="showContent(8, this)">9. Gestión de Capas</li>
+                    <li class="menu-item" onclick="showContent(9, this)">10. Importación y Exportación</li>
+                </ul>
+            </nav>
+
+            <main class="content-area" id="content-viewer">
+                
+                <div class="content-block active">
+                    <span class="badge-type">Geometría y Estructura</span>
+                    <h2 class="tool-title">Formas Básicas y Combinadas</h2>
+                    <p>Todo gráfico complejo nace a partir de figuras geométricas elementales (rectángulos, elipses, polígonos y líneas). El verdadero potencial radica en la capacidad de <strong>combinarlas</strong>.</p>
+                    <p>Mediante herramientas como el <strong>Buscatrazos (Pathfinder)</strong> o el creador de formas, puedes realizar operaciones booleanas:</p>
+                    <ul>
+                        <li><strong>Unión:</strong> Fusiona dos o más formas en una sola silueta.</li>
+                        <li><strong>Intersección:</strong> Conserva únicamente el área donde las formas se cruzan.</li>
+                        <li><strong>Exclusión/Restar:</strong> Utiliza una forma superior como "molde" para perforar o recortar la forma de fondo.</li>
+                    </ul>
+                    <div class="visual-demo">📦 [ Simulación: Círculo + Cuadrado = Nueva Forma Combinada ]</div>
+                    <div class="tip-box"><strong>Consejo Pro:</strong> En logotipos, siempre es mejor construir con formas combinadas que dibujar a mano alzada; esto garantiza simetría y vectores perfectos.</div>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Estilo Visual</span>
+                    <h2 class="tool-title">Relleno y Contornos (Stroke & Fill)</h2>
+                    <p>Son los atributos básicos que definen la superficie y el borde de cualquier objeto bidimensional:</p>
+                    <ul>
+                        <li><strong>Relleno (Fill):</strong> El color, patrón o degradado interno de la forma. Puede ser sólido, lineal, radial o incluso nulo (transparente).</li>
+                        <li><strong>Contorno o Trazo (Stroke):</strong> La línea perimetral que delimita el objeto. El software permite configurar su <em>grosor (puntos)</em>, el tipo de línea (continua o discontinua) y la alineación (centrado, interior o exterior del borde).</li>
+                    </ul>
+                    <div class="tip-box"><strong>¡Cuidado!</strong> Al escalar objetos vectoriales, asegúrate de activar la opción "Escalar trazos y efectos" para que el grosor del contorno no se deforme proporcionalmente.</div>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Vectores</span>
+                    <h2 class="tool-title">Trazos Abiertos y Cerrados</h2>
+                    <p>Los trazos creados con herramientas como la <strong>Pluma (Pen Tool)</strong> se dividen estructuralmente en dos naturalezas:</p>
+                    <ul>
+                        <li><strong>Trazos Abiertos:</strong> Tienen puntos de inicio y fin independientes que no se conectan (ej. una línea recta, un arco, una espiral). No encierran un área concreta.</li>
+                        <li><strong>Trazos Cerrados:</strong> El punto inicial y el punto final se unifican, aislando un espacio interior completo (ej. un círculo, una estrella). Son idóneos para aplicar rellenos sin anomalías visuales.</li>
+                    </ul>
+                    <div class="tip-box"><strong>Regla Técnica:</strong> Aplicar un color de relleno a un trazo abierto puede causar comportamientos inesperados e hilos fantasmas al exportar a código o imprenta. Mantén los rellenos en trazos cerrados.</div>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Tipografía</span>
+                    <h2 class="tool-title">Trabajo con Texto</h2>
+                    <p>El software moderno gestiona el texto bajo dos modalidades vitales para el flujo de trabajo:</p>
+                    <ul>
+                        <li><strong>Texto de Punto (Point Text):</strong> Ideal para títulos o palabras sueltas. Crece horizontalmente a menos que pulses Enter. Escalable de manera directa.</li>
+                        <li><strong>Texto de Área / Párrafo:</strong> Utiliza un contenedor delimitador. El texto se ajusta automáticamente a los bordes del cuadro. Imprescindible para diseño editorial y layouts.</li>
+                    </ul>
+                    <p><strong>Convertir a curvas (Create Outlines):</strong> Operación crítica que transforma las fuentes tipográficas vivas en vectores puros. Esto evita que el diseño se desconfigure si otra computadora no tiene la fuente instalada.</p>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Manipulación</span>
+                    <h2 class="tool-title">Transformación de Objetos</h2>
+                    <p>Modificaciones geométricas espaciales aplicadas a los elementos del lienzo:</p>
+                    <ul>
+                        <li><strong>Escalar y Rotar:</strong> Cambiar el tamaño manteniendo o no la proporción (usando la tecla Shift) y girar sobre un eje o punto de pivote.</li>
+                        <li><strong>Sesgar / Distorsionar (Shear):</strong> Inclinar los ejes del objeto para simular perspectivas o dinamismo.</li>
+                        <li><strong>Reflejar (Mirror):</strong> Crear copias exactas en sentido inverso (espejo), crucial para diseños simétricos e iconografía.</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Efectos No Destructivos</span>
+                    <h2 class="tool-title">Máscaras y Filtros</h2>
+                    <p>Herramientas avanzadas de ocultación y alteración visual:</p>
+                    <ul>
+                        <li><strong>Máscaras de Recorte (Clipping Masks):</strong> Utilizan una forma geométrica para "encerrar" o enmarcar otra imagen. El contenido fuera del contenedor se vuelve invisible sin borrarse.</li>
+                        <li><strong>Filtros (Filtros Inteligentes):</strong> Algoritmos matemáticos automáticos que modifican píxeles o vectores (Desenfoque Gaussiano, Enfoque, Modificaciones de Textura).</li>
+                    </ul>
+                    <div class="tip-box"><strong>Buenas Prácticas:</strong> Diseña siempre usando <em>Filtros Inteligentes</em> y <em>Máscaras</em> en lugar de la herramienta Borrador. Esto te permite corregir o volver atrás en cualquier fase del proyecto (Edición No Destructiva).</div>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Digitalización</span>
+                    <h2 class="tool-title">Escaneo y Captura de Imágenes</h2>
+                    <p>El puente entre el plano físico y el digital. Al ingresar imágenes desde un escáner o cámara, se debe planificar la resolución técnica:</p>
+                    <ul>
+                        <li><strong>Resolución para Impresión:</strong> Mínimo <strong>300 DPI/PPI</strong> (Puntos por pulgada) en modo de color CMYK.</li>
+                        <li><strong>Resolución para Pantallas:</strong> Tradicionalmente <strong>72 o 96 PPI</strong> en modo de color RGB.</li>
+                        <li><strong>Vectorización Automática (Image Trace):</strong> Herramienta de software que convierte una imagen escaneada basada en píxeles a curvas vectoriales editables.</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Fotocomposición</span>
+                    <h2 class="tool-title">Montajes y Efectos</h2>
+                    <p>La combinación de múltiples recursos en una sola escena coherente. Sus componentes esenciales son:</p>
+                    <ul>
+                        <li><strong>Modos de Fusión (Blending Modes):</strong> Determinan cómo interactúan los píxeles de una capa superior con la inferior (Multiplicar, Tramar, Superponer). Esencial para integrar luces, sombras y texturas ambientales.</li>
+                        <li><strong>Alineación de Perspectiva:</strong> Ajustar puntos de fuga para que los objetos integrados parezcan pertenecer físicamente al entorno.</li>
+                    </ul>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Organización</span>
+                    <h2 class="tool-title">Gestión de Capas (Layers)</h2>
+                    <p>Las capas son el pilar organizativo absoluto del diseño digital. Funcionan como hojas transparentes apiladas una encima de otra.</p>
+                    <ul>
+                        <li><strong>Orden de Apilamiento:</strong> Los elementos superiores cubren a los inferiores en el lienzo.</li>
+                        <li><strong>Bloqueo y Visibilidad:</strong> El icono del "ojo" oculta capas para trabajar con limpieza; el "candado" evita editar o mover por accidente elementos ya terminados.</li>
+                        <li><strong>Grupos de Capas:</strong> Carpetas para clasificar elementos relacionados (ej. Grupo "Header", Grupo "Botones").</li>
+                    </ul>
+                    <div class="tip-box"><strong>Ley del Diseñador Profesional:</strong> Capa que no tiene un nombre claro (ej. "Capa 54 copia 2") es tiempo perdido en el futuro. Nombra siempre tus capas y usa carpetas organizadoras.</div>
+                </div>
+
+                <div class="content-block">
+                    <span class="badge-type">Flujo de Trabajo</span>
+                    <h2 class="tool-title">Importación y Exportación</h2>
+                    <p>La comunicación del software con el exterior depende enteramente de los formatos de archivo:</p>
+                    <ul>
+                        <li><strong>Importar (Colocar / Place):</strong> Traer recursos externos (fotografías, archivos EPS, PDF) al lienzo de trabajo actual, ya sea como archivos enlazados o incrustados.</li>
+                        <li><strong>Exportar para Web:</strong> Formatos comprimidos y optimizados como <strong>PNG</strong> (con soporte de transparencia), <strong>JPG</strong> (fotografías compactas) o <strong>SVG</strong> (vectores interactivos y ligeros).</li>
+                        <li><strong>Exportar para Impresión:</strong> Formatos de alta fidelidad sin pérdida como <strong>PDF/X</strong> o <strong>TIFF</strong>.</li>
+                    </ul>
+                </div>
+
+            </main>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Material Didáctico de Apoyo • Módulo de Producción Gráfica y Multimedia • Tópicos de Calidad para el Diseño de Software © 2026</p>
+    </footer>
+
+    <script>
+        function showContent(index, element) {
+            // Desactivar todos los elementos del menú
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => item.classList.remove('active'));
+            
+            // Activar el menú seleccionado
+            element.classList.add('active');
+
+            // Ocultar todos los bloques de contenido
+            const blocks = document.querySelectorAll('.content-block');
+            blocks.forEach(block => block.classList.remove('active'));
+
+            // Mostrar el bloque de contenido correspondiente
+            blocks[index].classList.add('active');
+        }
+    </script>
+</body>
+</html>

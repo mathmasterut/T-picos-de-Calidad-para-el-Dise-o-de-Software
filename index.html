@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Aprendizaje: Diseño de Interfaces y Gráfico</title>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --dark-color: #0f172a;
+            --text-color: #334155;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Banner */
+        header {
+            background: linear-gradient(135deg, var(--dark-color), #312e81);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 1rem auto 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Barra de Progreso Simulada */
+        .welcome-box {
+            background: var(--card-bg);
+            padding: 1.8rem;
+            border-radius: 14px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .welcome-text h2 {
+            margin: 0;
+            color: var(--dark-color);
+            font-size: 1.4rem;
+        }
+        .welcome-text p {
+            margin: 5px 0 0 0;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* Grid de Módulos */
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+
+        .module-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .module-card h3 {
+            margin: 0 0 0.8rem 0;
+            color: var(--dark-color);
+            font-size: 1.3rem;
+            transition: color 0.2s;
+        }
+
+        .module-card:hover h3 {
+            color: var(--primary-color);
+        }
+
+        .module-card p {
+            margin: 0 0 1.5rem 0;
+            font-size: 0.92rem;
+            color: #64748b;
+            flex-grow: 1;
+        }
+
+        .btn-enter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            color: var(--dark-color);
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .module-card:hover .btn-enter {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            background: var(--dark-color);
+            color: #94a3b8;
+            margin-top: 5rem;
+        }
+
+        /* Colores temáticos para las etiquetas */
+        .tag-uxui { background: #e0e7ff; color: #4338ca; }
+        .tag-soft { background: #fef3c7; color: #d97706; }
+        .tag-tool { background: #d1fae5; color: #059669; }
+        .tag-img { background: #fce7f3; color: #db2777; }
+        .tag-proc { background: #e0f2fe; color: #0369a1; }
+
+        @media (max-width: 640px) {
+            header { padding: 3rem 1rem 4rem; }
+            header h1 { font-size: 1.8rem; }
+            .container { margin-top: -1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎓 Portal de Aprendizaje: Diseño Digital</h1>
+        <p>Centro de recursos interactivos y guías didácticas para el estudiante de Diseño de Interfaces, Producción Gráfica y Gestión Creativa.</p>
+    </header>
+
+    <div class="container">
+
+        <div class="welcome-box">
+            <div class="welcome-text">
+                <h2>¡Bienvenido al Curso!</h2>
+                <p>Selecciona cualquiera de los módulos didácticos interactivos listados abajo para comenzar tu consulta autónoma.</p>
+            </div>
+            <div style="font-size: 0.85rem; color: #64748b; font-weight: bold; background: #f1f5f9; padding: 8px 15px; border-radius: 8px;">
+                📚 5 Temas Disponibles
+            </div>
+        </div>
+
+        <main class="modules-grid">
+
+            <a href="UX_UI.html" class="module-card">
+                <div>
+                    <span class="module-tag tag-uxui">Tema 1 • UX / UI</span>
+                    <h3>El Universo de UX y UI</h3>
+                    <p>Explora los fundamentos del User Experience y User Interface. Incluye el laboratorio interactivo para entender la transformación de un Wireframe abstracto a una interfaz final.</p>
+                </div>
+                <div class="btn-enter">Estudiar Módulo →</div>
+            </a>
+
+            <a href="software.html" class="module-card">
+                <div>
+                    <span class="module-tag tag-soft">Tema 2 • Herramientas</span>
+                    <h3>Identificación de Software</h3>
+                    <p>Aprende las metodologías profesionales para analizar los requerimientos de un proyecto y seleccionar el software óptimo basado en presupuestos, plataformas y hardware.</p>
+                </div>
+                <div class="btn-enter">Estudiar Módulo →</div>
+            </a>
+
+            <a href="entorno_diseno.html" class="module-card">
+                <div>
+                    <span class="module-tag tag-tool">Tema 3 • Producción</span>
+                    <h3>Entorno y Manipulación</h3>
+                    <p>Manual técnico interactivo. Repasa los conceptos de formas combinadas, trazos, vectores, textos, gestión profesional de capas, máscaras, importación y exportación.</p>
+                </div>
+                <div class="btn-enter">Estudiar Módulo →</div>
+            </a>
+
+            <a href="imagenes_digitales.html" class="module-card">
+                <div>
+                    <span class="module-tag tag-img">Tema 4 • Activos</span>
+                    <h3>Imágenes Digitales y Leyes</h3>
+                    <p>Diferencias clave entre Mapas de Bits y Vectores con simulador de zoom extremo. Además, revisa el marco legal del Copyright, marcas y licencias Creative Commons.</p>
+                </div>
+                <div class="btn-enter">Estudiar Módulo →</div>
+            </a>
+
+            <a href="proceso_composicion.html" class="module-card">
+                <div>
+                    <span class="module-tag tag-proc">Tema 5 • Metodología</span>
+                    <h3>Proceso y Composición</h3>
+                    <p>Estudia las etapas del proyecto creativo (Analítica, Creativa y Desarrollo) y el Design Thinking. Cuenta con simulador interactivo de equilibrio, retículas y Regla de Tercios.</p>
+                </div>
+                <div class="btn-enter">Estudiar Módulo →</div>
+            </a>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>Centro de Documentación Académica Integrada • Módulos de Diseño Técnico y Creativo • Tópicos de Calidad para el Diseño de Software © 2026</p>
+        <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 5px;">Diseñado con fines pedagógicos y de autoaprendizaje para estudiantes de interfaces y entornos web.</p>
+    </footer>
+
+</body>
+</html>

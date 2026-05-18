@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo: Proceso Creativo y Composición Gráfica</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --dark-color: #0f172a;
+            --text-color: #334155;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark-color), #1d4ed8);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 1rem auto 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: #1d4ed8;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--dark-color);
+            margin-top: 1.5rem;
+        }
+
+        /* Comparador de Metodologías */
+        .methodology-box {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-method {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-method.active {
+            background: #1d4ed8;
+            color: white;
+            border-color: #1d4ed8;
+        }
+
+        .flow-display {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border-top: 4px solid #3b82f6;
+        }
+
+        /* Simulador de Composición */
+        .canvas-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .canvas {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: #e2e8f0;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #cbd5e1;
+        }
+
+        /* Elementos del Lienzo */
+        .comp-element {
+            position: absolute;
+            background: #3b82f6;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+        }
+
+        /* Líneas de Guía (Tercios) */
+        .grid-line {
+            position: absolute;
+            background: rgba(239, 68, 68, 0.4);
+            display: none;
+        }
+        .line-v1 { left: 33.33%; top: 0; width: 2px; height: 100%; }
+        .line-v2 { left: 66.66%; top: 0; width: 2px; height: 100%; }
+        .line-h1 { top: 33.33%; left: 0; height: 2px; width: 100%; }
+        .line-h2 { top: 66.66%; left: 0; height: 2px; width: 100%; }
+
+        /* Puntos de interés */
+        .grid-point {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background: white;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🎨 Proceso Creativo y Composición Gráfica</h1>
+        <p>Aprende las metodologías para transformar ideas abstractas en proyectos reales y descubre las leyes visuales que rigen el orden dentro del espacio de diseño.</p>
+    </header>
+
+    <div class="container">
+
+        <section>
+            <h2>1. Fases del Proyecto de Diseño Gráfico-Creativo</h2>
+            <p>El diseño profesional no depende de la inspiración divina; sigue una metodología estructurada que mitiga errores y garantiza que la solución responda a un problema real.</p>
+            
+            <div class="methodology-box">
+                <div class="toggle-container">
+                    <button class="btn-method active" onclick="switchMethod('classic')">Modelo Clásico de 3 Fases</button>
+                    <button class="btn-method" onclick="switchMethod('dt')">Modelo Design Thinking</button>
+                </div>
+
+                <div class="flow-display" id="method-flow">
+                    </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Composición Gráfica en el Espacio Visual</h2>
+            <p>La <strong>composición</strong> es el arte de distribuir y disponer los elementos visuales (formas, textos, imágenes) dentro de un formato para transmitir un mensaje claro y guiar la mirada del espectador de manera intencional.</p>
+            
+            <h3>Conceptos Clave de Distribución</h3>
+            <ul>
+                <li><strong>Jerarquía Visual:</strong> El orden en el que el ojo humano lee la información. Se logra mediante variaciones de tamaño, color y peso visual.</li>
+                <li><strong>Equilibrio Simétrico:</strong> Los elementos se distribuyen de manera idéntica a ambos lados de un eje central. Transmite formalidad, seriedad y estabilidad.</li>
+                <li><strong>Equilibrio Asimétrico:</strong> Los elementos tienen diferentes pesos pero se compensan dinámicamente mediante el uso de espacios en blanco, color o contrastes. Transmite modernidad y movimiento.</li>
+                <li><strong>Espacio en Blanco (Negativo):</strong> La ausencia de elementos. No es espacio "vacío"; es una herramienta compositiva crucial que da descanso visual y resalta lo importante.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>📐 Laboratorio de Composición y Distribución</h2>
+            <p>Prueba los diferentes modos de organización para ver cómo la disposición y las guías invisibles cambian por completo el peso de la escena visual:</p>
+            
+            <div class="canvas-container">
+                <div class="toggle-container">
+                    <button class="btn-method active" onclick="setComposition('chaos')">Sin Orden (Caos)</button>
+                    <button class="btn-method" onclick="setComposition('symmetry')">Equilibrio Simétrico</button>
+                    <button class="btn-method" onclick="setComposition('rule3')">Regla de Tercios</button>
+                </div>
+
+                <div class="canvas" id="main-canvas">
+                    <div class="grid-line line-v1"></div>
+                    <div class="grid-line line-v2"></div>
+                    <div class="grid-line line-h1"></div>
+                    <div class="grid-line line-h2"></div>
+                    
+                    <div class="grid-point" style="left:33.33%; top:33.33%;"></div>
+                    <div class="grid-point" style="left:66.66%; top:33.33%;"></div>
+                    <div class="grid-point" style="left:33.33%; top:66.66%;"></div>
+                    <div class="grid-point" style="left:66.66%; top:66.66%;"></div>
+
+                    <div id="el-1" class="comp-element" style="background:#ef4444;">Título Principal</div>
+                    <div id="el-2" class="comp-element">Imagen Recurso</div>
+                    <div id="el-3" class="comp-element" style="background:#10b981;">Call to Action (Botón)</div>
+                </div>
+                <p id="composition-desc" style="font-style: italic; color:#64748b; font-size:0.95rem;">Selecciona una distribución para ver el análisis de espacio.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Material de Consulta Académica • Fundamentos de Diseño y Metodología • Tópicos de Calidad para el Diseño de Software © 2026</p>
+    </footer>
+
+    <script>
+        // Datos de Metodologías
+        const classicSteps = [
+            { title: "1. Fase Analítica", desc: "Investigación profunda. Se analiza el brief del cliente, el público objetivo (target) y la competencia directa. Se definen objetivos técnicos." },
+            { title: "2. Fase Creativa", desc: "Idación y conceptualización. Es la etapa de bocetaje a mano, lluvias de ideas, mapas mentales y traducción del concepto a metáforas visuales." },
+            { title: "3. Fase de Desarrollo", desc: "Producción digital. Se pasa el boceto limpio al software, se refinan colores, tipografía y se preparan los archivos para impresión o código." }
+        ];
+
+        const dtSteps = [
+            { title: "1. Empatizar", desc: "Entender profundamente las necesidades del usuario final." },
+            { title: "2. Definir", desc: "Fijar con claridad el problema central que resolveremos." },
+            { title: "3. Idear", desc: "Generar múltiples opciones locas y lógicas sin juzgarlas aún." },
+            { title: "4. Prototipar", desc: "Construir maquetas rápidas y baratas para palpar la idea." },
+            { title: "5. Evaluar", desc: "Probar los prototipos con usuarios reales para corregir rumbos." }
+        ];
+
+        function switchMethod(type) {
+            const container = document.getElementById('method-flow');
+            const buttons = document.querySelectorAll('.btn-method');
+            
+            // Toggle de botones activos de la sección 1
+            event.target.parentNode.querySelector('.active').classList.remove('active');
+            event.target.classList.add('active');
+
+            const steps = type === 'classic' ? classicSteps : dtSteps;
+            container.innerHTML = steps.map(step => `
+                <div class="step-card">
+                    <h3>${step.title}</h3>
+                    <p style="font-size:0.9rem; margin:0;">${step.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // Control del Lienzo de Composición
+        function setComposition(mode) {
+            // Manejo de botones activos de la sección 2
+            const sectionButtons = event.target.parentNode.querySelectorAll('.btn-method');
+            sectionButtons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const el1 = document.getElementById('el-1');
+            const el2 = document.getElementById('el-2');
+            const el3 = document.getElementById('el-3');
+            const lines = document.querySelectorAll('.grid-line');
+            const points = document.querySelectorAll('.grid-point');
+            const desc = document.getElementById('composition-desc');
+
+            // Ocultar guías por defecto
+            lines.forEach(l => l.style.display = 'none');
+            points.forEach(p => p.style.display = 'none');
+
+            if (mode === 'chaos') {
+                el1.style.cssText = "left: 10px; top: 15px; width: 140px; height: 40px; background:#ef4444;";
+                el2.style.cssText = "left: 10px; top: 70px; width: 300px; height: 180px;";
+                el3.style.cssText = "left: 330px; top: 20px; width: 150px; height: 50px; background:#10b981;";
+                desc.textContent = "⚠️ Caos: Los elementos están sobrepuestos o arrojados sin relación. El ojo se distrae y no sabe qué leer primero (Pérdida de foco).";
+            } 
+            else if (mode === 'symmetry') {
+                el1.style.cssText = "left: 125px; top: 30px; width: 250px; height: 40px; background:#ef4444;";
+                el2.style.cssText = "left: 150px; top: 90px; width: 200px; height: 120px;";
+                el3.style.cssText = "left: 175px; top: 230px; width: 150px; height: 45px; background:#10b981;";
+                desc.textContent = "🪞 Equilibrio Simétrico: Todo alineado perfectamente al centro. Transmite una sensación clásica, ordenada, estable y muy limpia.";
+            } 
+            else if (mode === 'rule3') {
+                lines.forEach(l => l.style.display = 'block');
+                points.forEach(p => p.style.display = 'block');
+                
+                el1.style.cssText = "left: 40px; top: 60px; width: 260px; height: 40px; background:#ef4444;";
+                el2.style.cssText = "left: 340px; top: 40px; width: 130px; height: 220px;";
+                el3.style.cssText = "left: 40px; top: 180px; width: 160px; height: 45px; background:#10b981;";
+                desc.textContent = "🎯 Regla de Tercios: Al dividir el lienzo en secciones de 3x3, colocamos los elementos clave (el título y el botón de acción) cruzando los puntos de intersección rojos. Esto crea composiciones asimétricas dinámicas y altamente atractivas.";
+            }
+        }
+
+        // Inicialización por defecto
+        window.onload = function() {
+            switchMethod('classic');
+            setComposition('chaos');
+        };
+    </script>
+</body>
+</html>
